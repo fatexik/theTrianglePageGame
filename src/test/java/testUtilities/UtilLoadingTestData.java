@@ -11,12 +11,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class utilLoadingTestData {
-    public static ArrayList<Object[]> loadingData() throws IOException {
+public class UtilLoadingTestData {
+    private static final String DATA_PATH = "src/test/resources/TestData.xlsx";
+
+    /**
+     * loads the data for the test from the excel file
+     */
+    public static ArrayList<Object[]> loadingData(int numberOfSheet) throws IOException {
         ArrayList<Object[]> arrayTestData = new ArrayList<Object[]>();
-        InputStream in = new FileInputStream("src/testData/DataExel.xlsx");
+        InputStream in = new FileInputStream(DATA_PATH);
         XSSFWorkbook wb = new XSSFWorkbook(in);
-        Sheet sheet = wb.getSheetAt(0);
+        Sheet sheet = wb.getSheetAt(numberOfSheet);
         Iterator<org.apache.poi.ss.usermodel.Row> it = sheet.iterator();
         while (it.hasNext()) {
             org.apache.poi.ss.usermodel.Row row = it.next();
@@ -28,16 +33,16 @@ public class utilLoadingTestData {
                 int cellType = cell.getCellType();
                 switch (cellType) {
                     case Cell.CELL_TYPE_NUMERIC:
-                        testData[iteration] = Integer.valueOf((int)cell.getNumericCellValue());
+                        testData[iteration] = Integer.valueOf((int) cell.getNumericCellValue());
                         break;
                     case Cell.CELL_TYPE_STRING:
                         testData[iteration] = cell.getStringCellValue();
                         break;
                 }
-                arrayTestData.add(testData);
                 iteration++;
             }
+            arrayTestData.add(testData);
         }
-    return arrayTestData;
+        return arrayTestData;
     }
 }

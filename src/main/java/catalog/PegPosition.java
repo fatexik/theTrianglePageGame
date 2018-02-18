@@ -1,5 +1,8 @@
-package essenceClasses;
+package catalog;
 
+/**
+ * class describing the peg on the playing field
+ */
 public class PegPosition {
     private int row;
     private int col;
@@ -20,8 +23,8 @@ public class PegPosition {
     public int hashCode() {
         int result = 8;
 
-        result = 21*result + row;
-        result = 21*result + col;
+        result = 21 * result + row;
+        result = 21 * result + col;
 
         return result;
     }
@@ -39,6 +42,6 @@ public class PegPosition {
 
     @Override
     public String toString() {
-        return (Integer.toString(this.row)+Integer.toString(this.col));
+        return (Integer.toString(this.row) + Integer.toString(this.col));
     }
 }
