@@ -11,8 +11,7 @@ public class SearchPossibleField {
     final static int SIZEOFARRAYPEGS = 5;
 
     /**
-     * @param currentField
-     * @return all possible playing field after jumping from this position
+     * all possible playing field after jumping from this position
      */
     public static ArrayList<PlayingField> possibleFieldList(PlayingField currentField) {
         ArrayList<PlayingField> boards = new ArrayList<PlayingField>();
